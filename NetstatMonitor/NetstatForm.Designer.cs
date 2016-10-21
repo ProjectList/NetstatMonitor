@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NetstatForm));
             this.label1 = new System.Windows.Forms.Label();
             this.filterTb = new System.Windows.Forms.TextBox();
             this.startBtn = new System.Windows.Forms.Button();
             this.monitorGirdview = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.linkCount = new System.Windows.Forms.Label();
             this.TimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Protocol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LocalAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RemoteAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.linkCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.monitorGirdview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,24 +91,6 @@
             this.monitorGirdview.Size = new System.Drawing.Size(661, 369);
             this.monitorGirdview.TabIndex = 3;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(263, 12);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Current tcp link count by filter condition:";
-            // 
-            // linkCount
-            // 
-            this.linkCount.AutoSize = true;
-            this.linkCount.Location = new System.Drawing.Point(276, 50);
-            this.linkCount.Name = "linkCount";
-            this.linkCount.Size = new System.Drawing.Size(11, 12);
-            this.linkCount.TabIndex = 5;
-            this.linkCount.Text = "0";
-            // 
             // TimeStamp
             // 
             this.TimeStamp.HeaderText = "TimeStamp";
@@ -152,6 +135,24 @@
             this.State.Name = "State";
             this.State.ReadOnly = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(263, 12);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Current tcp link count by filter condition:";
+            // 
+            // linkCount
+            // 
+            this.linkCount.AutoSize = true;
+            this.linkCount.Location = new System.Drawing.Point(276, 50);
+            this.linkCount.Name = "linkCount";
+            this.linkCount.Size = new System.Drawing.Size(11, 12);
+            this.linkCount.TabIndex = 5;
+            this.linkCount.Text = "0";
+            // 
             // NetstatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -164,6 +165,7 @@
             this.Controls.Add(this.filterTb);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(700, 523);
             this.Name = "NetstatForm";

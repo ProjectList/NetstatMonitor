@@ -19,8 +19,8 @@ namespace NetstatMonitor
     public partial class NetstatForm : Form
     {
         private bool _isMonitor ;
-        private string logs;
-        private int currentLogCount;
+        private string _logs;
+        private int _currentLogCount;
         public NetstatForm()
         {
             InitializeComponent();
@@ -40,7 +40,6 @@ namespace NetstatMonitor
                 filterTb.Text = "";
                 startBtn.Text = "Start Monitor";
             }
-            //GetNetstatByCmd();
         }
 
         private async void Monitor(String filter)
@@ -55,8 +54,7 @@ namespace NetstatMonitor
 
         private void MonitorNetstat(String filter)
         {
-            //string cmd = "/c echo %date% %time% >> log.txt && netstat -an >> log.txt"; 
-            if (String.IsNullOrEmpty(filter))
+           if (String.IsNullOrEmpty(filter))
             {
                 MessageBox.Show("Filter cannot be null");
                 return;
@@ -89,73 +87,22 @@ namespace NetstatMonitor
 
         private void AddToLog(params string[] logInfo)
         {
-            string log = String.Join("\t", logInfo);
-            logs += (log + "\r\n");
-            ++currentLogCount;
+            var log = String.Join("\t", logInfo);
+            _logs += (log + "\r\n");
+            ++_currentLogCount;
             WriteLog();
         }
 
         private void WriteLog(bool flush = false)
         {   
-            if (currentLogCount < 1000 && !flush) return;
+            if (_currentLogCount < 1000 && !flush) return;
             using (var streamWriter = new StreamWriter("Log.txt", true))
             {
-                streamWriter.WriteLine(logs);
+                streamWriter.WriteLine(_logs);
                 streamWriter.Flush();
             }
-            logs = "";
-            currentLogCount = 0;
-        }
-
-        private static void GetNetstatByCmd()
-        {
-            ProcessStartInfo cmdStartInfo = new ProcessStartInfo();
-            cmdStartInfo.FileName = @"C:\Windows\System32\cmd.exe";
-            cmdStartInfo.RedirectStandardOutput = true;
-            cmdStartInfo.RedirectStandardError = true;
-            cmdStartInfo.RedirectStandardInput = true;
-            cmdStartInfo.UseShellExecute = false;
-            cmdStartInfo.CreateNoWindow = true;
-
-            Process cmdProcess = new Process();
-            cmdProcess.StartInfo = cmdStartInfo;
-            cmdProcess.ErrorDataReceived += cmd_Error;
-            cmdProcess.OutputDataReceived += cmd_DataReceived;
-            cmdProcess.EnableRaisingEvents = true;
-            cmdProcess.Start();
-            cmdProcess.BeginOutputReadLine();
-            cmdProcess.BeginErrorReadLine();
-
-            cmdProcess.StandardInput.WriteLine("netstat -an | find \"80\"");
-            cmdProcess.StandardInput.WriteLine("exit"); //Execute exit.
-            cmdProcess.WaitForExit();
-        }
-
-        static void cmd_DataReceived(object sender, DataReceivedEventArgs e)
-        {
-            Console.WriteLine("Output from other process");
-            Console.WriteLine(e.Data);
-        }
-
-        static void cmd_Error(object sender, DataReceivedEventArgs e)
-        {
-            Console.WriteLine("Error from other process");
-            Console.WriteLine(e.Data);
-        }
-        private static void getActiveTcp()
-        {
-            IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
-            IPEndPoint[] endPoints = ipProperties.GetActiveTcpListeners();
-            TcpConnectionInformation[] tcpConnections =
-                ipProperties.GetActiveTcpConnections();
-
-            foreach (TcpConnectionInformation info in tcpConnections)
-            {
-                Console.WriteLine("Local: {0}:{1}\nRemote: {2}:{3}\nState: {4}\n",
-                    info.LocalEndPoint.Address, info.LocalEndPoint.Port,
-                    info.RemoteEndPoint.Address, info.RemoteEndPoint.Port,
-                    info.State.ToString());
-            }
+            _logs = "";
+            _currentLogCount = 0;
         }
     }
 }
