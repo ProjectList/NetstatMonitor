@@ -1,0 +1,9 @@
+D:\Projects\ClientSdkProjects\NetstatMonitor\NetstatMonitor\bin\Debug\NetstatMonitor.exe.config
+D:\Projects\ClientSdkProjects\NetstatMonitor\NetstatMonitor\bin\Debug\NetstatMonitor.exe
+D:\Projects\ClientSdkProjects\NetstatMonitor\NetstatMonitor\bin\Debug\NetstatMonitor.pdb
+D:\Projects\ClientSdkProjects\NetstatMonitor\NetstatMonitor\obj\Debug\NetstatMonitor.csprojResolveAssemblyReference.cache
+D:\Projects\ClientSdkProjects\NetstatMonitor\NetstatMonitor\obj\Debug\NetstatMonitor.NetstatForm.resources
+D:\Projects\ClientSdkProjects\NetstatMonitor\NetstatMonitor\obj\Debug\NetstatMonitor.Properties.Resources.resources
+D:\Projects\ClientSdkProjects\NetstatMonitor\NetstatMonitor\obj\Debug\NetstatMonitor.csproj.GenerateResource.Cache
+D:\Projects\ClientSdkProjects\NetstatMonitor\NetstatMonitor\obj\Debug\NetstatMonitor.exe
+D:\Projects\ClientSdkProjects\NetstatMonitor\NetstatMonitor\obj\Debug\NetstatMonitor.pdb
