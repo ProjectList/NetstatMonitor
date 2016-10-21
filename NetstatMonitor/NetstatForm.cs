@@ -19,7 +19,7 @@ namespace NetstatMonitor
     public partial class NetstatForm : Form
     {
         private bool _isMonitor ;
-        private string _logs;
+        private string _logs="";
         private int _currentLogCount;
         public NetstatForm()
         {
@@ -38,6 +38,7 @@ namespace NetstatMonitor
             {
                 _isMonitor = false;
                 filterTb.Text = "";
+                monitorGirdview.Rows.Clear();
                 startBtn.Text = "Start Monitor";
             }
         }
@@ -79,10 +80,22 @@ namespace NetstatMonitor
             foreach (var tcpInfo in lines.Select(line => Regex.Split(line, "\\s+")).Where(tcpInfo => tcpInfo.Length == 6))
             {
                 tcpInfo[0] = currentTime;
-                monitorGirdview.Rows.Add(tcpInfo[0], tcpInfo[5], tcpInfo[1], tcpInfo[2], tcpInfo[3], tcpInfo[4]);
+                //monitorGirdview.Rows.Add(tcpInfo[0], tcpInfo[5], tcpInfo[1], tcpInfo[2], tcpInfo[3], tcpInfo[4]);
+                AddToView(tcpInfo);
                 AddToLog(tcpInfo[0], tcpInfo[5], tcpInfo[1], tcpInfo[2], tcpInfo[3], tcpInfo[4]);
             }
+            if (lines.Length == 1)
+            {
+                AddToView(new[] { currentTime, "-", "-", "-", "-", "-" });
+            }
             monitorGirdview.FirstDisplayedScrollingRowIndex = monitorGirdview.RowCount - 1;
+        }
+
+        private void AddToView(string[] tcpInfo)
+        {
+            string id = tcpInfo[5] + "\t" + tcpInfo[1] + "\t" + tcpInfo[2] + "\t" + tcpInfo[3] + "\t" + tcpInfo[4];
+            if(!deDupCb.Checked || !_logs.Contains(id))
+            monitorGirdview.Rows.Add(tcpInfo[0], tcpInfo[5], tcpInfo[1], tcpInfo[2], tcpInfo[3], tcpInfo[4]);
         }
 
         private void AddToLog(params string[] logInfo)

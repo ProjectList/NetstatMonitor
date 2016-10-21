@@ -41,6 +41,7 @@
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.linkCount = new System.Windows.Forms.Label();
+            this.deDupCb = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.monitorGirdview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@
             // 
             this.filterTb.Location = new System.Drawing.Point(125, 10);
             this.filterTb.Name = "filterTb";
-            this.filterTb.Size = new System.Drawing.Size(401, 21);
+            this.filterTb.Size = new System.Drawing.Size(312, 21);
             this.filterTb.TabIndex = 1;
             // 
             // startBtn
@@ -153,11 +154,22 @@
             this.linkCount.TabIndex = 5;
             this.linkCount.Text = "0";
             // 
+            // deDupCb
+            // 
+            this.deDupCb.AutoSize = true;
+            this.deDupCb.Location = new System.Drawing.Point(447, 12);
+            this.deDupCb.Name = "deDupCb";
+            this.deDupCb.Size = new System.Drawing.Size(90, 16);
+            this.deDupCb.TabIndex = 6;
+            this.deDupCb.Text = "Deduplicate";
+            this.deDupCb.UseVisualStyleBackColor = true;
+            // 
             // NetstatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 485);
+            this.Controls.Add(this.deDupCb);
             this.Controls.Add(this.linkCount);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.monitorGirdview);
@@ -191,6 +203,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LocalAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn RemoteAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn State;
+        private System.Windows.Forms.CheckBox deDupCb;
     }
 }
 
